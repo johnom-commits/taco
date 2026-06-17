@@ -7,7 +7,9 @@
     </head>
     <body>
         <h1>Design your taco!</h1>
-        <img th:src="@{/images/pizza.jpg}"/>
+        <p th:text="${message}">Здесь должен быть message</p>
+
+        <img th:src="@{/images/design_taco.jpg}" alt="picture with taco"/>
 
         <form method="POST" th:object="${taco}">
             <div class="grid">

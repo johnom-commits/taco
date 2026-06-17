@@ -5,19 +5,22 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.7.7</version>
+        <version>3.4.3</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
+
     <groupId>sia</groupId>
     <artifactId>taco-cloud</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>taco-cloud</name>
     <description>Taco Cloud Example</description>
+
     <properties>
-        <java.version>1.8</java.version>
-        <maven.compiler.target>1.8</maven.compiler.target>
-        <maven.compiler.source>1.8</maven.compiler.source>    
+        <java.version>21</java.version>
+        <maven.compiler.target>21</maven.compiler.target>
+        <maven.compiler.source>21</maven.compiler.source>
     </properties>
+
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -37,6 +40,8 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
+            <version>1.18.38</version>  <!-- Обновите версию -->
+            <scope>provided</scope>
             <optional>true</optional>
         </dependency>
         <dependency>

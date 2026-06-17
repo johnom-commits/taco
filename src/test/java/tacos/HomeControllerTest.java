@@ -25,6 +25,11 @@ public class HomeControllerTest {
 		.andExpect(content().string(containsString("Welcome to...")));
 	}
 
+    @Test
+    public void testHomePageWhenNodFound() throws Exception {
+        mockMvc.perform(get("/test"))
+                .andExpect(status().isNotFound());
+    }
 }
 
 
