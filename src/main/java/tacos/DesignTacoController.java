@@ -12,12 +12,12 @@ import java.util.List;
 
 @Slf4j
 @Controller
-@RequestMapping("/design")
 @SessionAttributes("tacoOrder")
 public class DesignTacoController {
 
-    @GetMapping
-    public String showDesignForm() {
+    @GetMapping("/design")
+    public String showDesignForm(Model model) {
+        log.info("Show model: {}", model.asMap());
         return "design";
     }
 
@@ -45,15 +45,8 @@ public class DesignTacoController {
         }
     }
 
-    @PostMapping
-    public String processTaco(
-            @Valid Taco taco, 
-            Errors errors,
-            @ModelAttribute TacoOrder tacoOrder) {
-        if (errors.hasErrors()) {
-            log.debug("!!!!Error!!!!");
-            return "design";
-        }
+    @PostMapping("/design")
+    public String processTaco(Taco taco, @ModelAttribute TacoOrder tacoOrder) {
         tacoOrder.addTaco(taco);
         log.info("Processing taco: {}", taco);
 
