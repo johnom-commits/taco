@@ -11,7 +11,7 @@ import tacos.Ingredient.Type;
 @Component
 public class IngredientByIdConverter implements Converter<String, Ingredient> {
 
-    private Map<String, Ingredient> map = new HashMap<>();
+    private final Map<String, Ingredient> map = new HashMap<>();
 
     public IngredientByIdConverter() {
         map.put("FLTO", new Ingredient("FLTO", "Flour Tortilla", Type.WRAP));

@@ -46,7 +46,13 @@ public class DesignTacoController {
     }
 
     @PostMapping("/design")
-    public String processTaco(Taco taco, @ModelAttribute TacoOrder tacoOrder) {
+    public String processTaco(@Valid Taco taco,
+                              Errors errors,
+                              @ModelAttribute TacoOrder tacoOrder) {
+        if (errors.hasErrors()) {
+            log.error("Design is invalid: " + errors.toString());
+            return "design";
+        }
         tacoOrder.addTaco(taco);
         log.info("Processing taco: {}", taco);
 
