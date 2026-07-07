@@ -24,6 +24,9 @@ public class OrderController {
     public String processOrder(@Valid TacoOrder order, Errors errors,
                                SessionStatus sessionStatus) {
         if (errors.hasErrors()) {
+            errors.getFieldErrors().forEach(e -> {
+                log.error("{} : {}", e.getField(), e.getDefaultMessage());
+            });
             return "orderForm";
         }
 
