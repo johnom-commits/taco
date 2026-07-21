@@ -67,7 +67,7 @@ public class JdbcOrderRepository implements OrderRepository {
     private long saveTaco(long orderId, int orderKey, Taco taco) {
        taco.setCreatedAt(new Date());
         PreparedStatementCreatorFactory factory = new PreparedStatementCreatorFactory("""
-                INSERT INTO Taco (name, cratedAt, taco_order, taco_order_id)
+                INSERT INTO Taco (name, created_at, taco_order, taco_order_key)
                 VALUES (?, ?, ?, ?)""",
                 Types.VARCHAR, Types.TIMESTAMP, Type.LONG, Type.LONG
         );
@@ -88,6 +88,12 @@ public class JdbcOrderRepository implements OrderRepository {
     private void saveIngredientRefs(long tacoId,
                                     @NotNull @Size(min = 1, message = "You must choose at least 1 ingredient")
                                     List<Ingredient> ingredients) {
-
+        int key = 1;
+        for (Ingredient ingredient : ingredients) {
+            jdbcOperations.update("""
+                    INSERT INTO Ingredient_Ref (ingredient, taco, taco_key)
+                    VALUES (?, ?, ?)""",
+                    ingredient.getId(), tacoId, key++);
+        }
     }
 }

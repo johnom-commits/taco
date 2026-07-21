@@ -12,7 +12,7 @@ import java.util.Optional;
 @Repository
 public class JdbcIngredientRepository implements IngredientRepository {
 
-    private JdbcTemplate jdbcTemplate;
+    private final JdbcTemplate jdbcTemplate;
 
     public JdbcIngredientRepository(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
@@ -46,5 +46,4 @@ public class JdbcIngredientRepository implements IngredientRepository {
                 Ingredient.Type.valueOf(resultSet.getString("type"))
         );
     }
-
 }
