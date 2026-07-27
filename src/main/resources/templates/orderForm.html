@@ -42,7 +42,8 @@
                 deliveryCity error</span>
             <br/>
             <label for="deliveryState">State: </label>
-            <input type="text" th:field="*{deliveryState}"/>
+            <input type="text" th:field="*{deliveryState}"
+                   th:attr="value=${deliveryState != null && deliveryState != '' ? deliveryState : 'ss'}"/>
             <span class="validationError"
                   th:if="${#fields.hasErrors('deliveryState')}" th:errors="*{deliveryState}">
                 deliveryState error</span>
@@ -69,7 +70,7 @@
                 CC Expiration error!</span>
             <br/>
             <label for="ccCVV">CVV: </label>
-            <input type="text" th:field="*{ccCVV}"/>
+            <input type="text" th:field="*{ccCVV}" value="12/28"/>
             <span class="validationError"
                   th:if="${#fields.hasErrors('ccCVV')}" th:errors="*{ccCVV}">
                 ccCVV error</span>
